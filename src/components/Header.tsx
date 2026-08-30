@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Container from "./Container";
 import Button from "./Button";
@@ -9,6 +9,7 @@ import { telHref } from "../utils/phone";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -66,15 +67,26 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          {site.nav.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className="relative inline-block uppercase text-sm font-semibold tracking-[0.08em] text-white/90 transition-colors hover:text-red after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-red after:transition-all after:duration-300 after:ease-out hover:after:w-full"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {site.nav.map((item) => {
+            const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+
+            return (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === "/"}
+                className={({ isPending }) =>
+                  `relative inline-block uppercase text-sm font-semibold tracking-[0.08em] transition-colors ${
+                    isActive || isPending ? "text-red" : "text-white/90 hover:text-red"
+                  } after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-red after:transition-all after:duration-300 after:ease-out ${
+                    isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            );
+          })}
         </nav>
 
         <div className="hidden md:block">
@@ -98,16 +110,27 @@ export default function Header() {
       {isMenuOpen && (
         <div className="md:hidden border-t border-white/10 bg-graphite">
           <Container className="flex flex-col py-4 gap-4">
-            {site.nav.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="relative inline-block uppercase text-sm font-semibold tracking-[0.08em] text-white/90 transition-colors hover:text-red after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-red after:transition-all after:duration-300 after:ease-out hover:after:w-full"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {site.nav.map((item) => {
+              const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  end={item.path === "/"}
+                  className={({ isPending }) =>
+                    `relative inline-block uppercase text-sm font-semibold tracking-[0.08em] transition-colors ${
+                      isActive || isPending ? "text-red" : "text-white/90 hover:text-red"
+                    } after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-red after:transition-all after:duration-300 after:ease-out ${
+                      isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
+                    }`
+                  }
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </NavLink>
+              );
+            })}
             <Button href="/contact" variant="primary" className="text-center" onClick={() => setIsMenuOpen(false)}>
               Contact
             </Button>

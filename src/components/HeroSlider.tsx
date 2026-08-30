@@ -35,16 +35,28 @@ export default function HeroSlider({ images, interval = 4000, children }: HeroSl
 
   return (
     <section className="relative flex items-center min-h-[85vh] overflow-hidden bg-graphite">
-      {images.map((image, i) => (
-        <div
-          key={image}
-          aria-hidden={i !== active}
-          className={`absolute -inset-2 scale-105 blur-[1.5px] transition-opacity duration-1000 ease-in-out ${
-            i === active ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" }}
-        />
-      ))}
+      {images.map((image, i) => {
+        const isActive = i === active;
+
+        return (
+          <div
+            key={image}
+            aria-hidden={!isActive}
+            className={`absolute -inset-2 scale-105 blur-[1.5px] transition-opacity duration-1000 ease-in-out ${
+              isActive ? "opacity-100" : "opacity-0"
+            }`}
+            style={
+              isActive
+                ? {
+                    backgroundImage: `url(${image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }
+                : undefined
+            }
+          />
+        );
+      })}
       <div
         className="absolute inset-0"
         style={{ backgroundImage: "linear-gradient(to bottom right, rgba(47,49,51,0.65), rgba(47,49,51,0.45))" }}

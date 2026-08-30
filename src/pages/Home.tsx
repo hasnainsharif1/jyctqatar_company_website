@@ -142,7 +142,11 @@ export default function Home() {
         </Reveal>
       </Section>
 
-      <Section bg="cloud" bgImage="/images/service_section.png">
+      <Section
+        bg="cloud"
+        bgImage="/images/service_section.png"
+        className="bg-[linear-gradient(180deg,#f7f7f8_0%,#fbebed_45%,#f3f5f6_100%)]"
+      >
         <Reveal>
           <SectionHeading eyebrow="What We Do" title="Our Services" align="center" />
         </Reveal>
@@ -204,7 +208,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section bg="cloud">
+      <Section bg="cloud" className="bg-[linear-gradient(180deg,#eef1f3_0%,#f5f6f7_45%,#e8ebee_100%)]">
         <Reveal>
           <SectionHeading eyebrow="Our Clients" title="Trusted Across Qatar" align="center" />
         </Reveal>
@@ -244,7 +248,7 @@ export default function Home() {
         </Reveal>
       </Section>
 
-      <Section bg="cloud">
+      <Section bg="cloud" className="bg-[linear-gradient(180deg,#fbebed_0%,#f5f6f7_100%)]">
         <Reveal>
           <SectionHeading eyebrow="Leadership" title="A Message From Our Leadership" align="center" />
         </Reveal>

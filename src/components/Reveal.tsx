@@ -17,21 +17,8 @@ export default function Reveal({ children, className = "", delay = 0, duration =
   }, []);
 
   useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 },
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
+    const frame = requestAnimationFrame(() => setIsVisible(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const transformClasses = prefersReducedMotion ? "" : isVisible ? "translate-y-0" : "translate-y-4";

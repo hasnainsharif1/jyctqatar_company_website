@@ -14,6 +14,22 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "ASHGAL",
+    category: "Contracting",
+    location: "Doha, Qatar",
+    images: [
+      "/images/projects/ashgal_1.jpeg",
+      "/images/projects/ashgal_2.jpeg",
+      "/images/projects/ashgal_3.jpeg",
+      "/images/projects/ashgal_4.jpeg",
+    ],
+    description:
+      "Maintenance works executed for Ashghal in coordination with Veolia, supporting reliable infrastructure operations and service continuity across Doha, Qatar.",
+    client: "Veolia",
+    date: "June 2026 - September 2026",
+    status: "Completed",
+  },
+  {
     title: "Gypsum & Paint Work at The Pearl Qatar",
     category: "Contracting",
     location: "The Pearl, Doha, Qatar",

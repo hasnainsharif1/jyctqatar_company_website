@@ -7,6 +7,13 @@ const SLIDE_INTERVAL = 3500;
 
 function ProjectSlide({ image, title, isActive }: { image: string; title: string; isActive: boolean }) {
   const [hasError, setHasError] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(isActive);
+
+  useEffect(() => {
+    if (isActive) {
+      setShouldLoad(true);
+    }
+  }, [isActive]);
 
   if (hasError) {
     return (
@@ -20,10 +27,16 @@ function ProjectSlide({ image, title, isActive }: { image: string; title: string
     );
   }
 
+  if (!shouldLoad) {
+    return null;
+  }
+
   return (
     <img
       src={image}
       alt={title}
+      loading="lazy"
+      decoding="async"
       onError={() => setHasError(true)}
       className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 group-hover:scale-105 ${
         isActive ? "opacity-100" : "opacity-0"
@@ -53,7 +66,7 @@ function ProjectImageSlider({ images, title }: { images: string[]; title: string
   return (
     <>
       {images.map((image, i) => (
-        <ProjectSlide key={image} image={image} title={title} isActive={i === active} />
+        <ProjectSlide key={`${title}-${image}`} image={image} title={title} isActive={i === active} />
       ))}
     </>
   );
