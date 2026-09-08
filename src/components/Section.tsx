@@ -53,20 +53,29 @@ export default function Section({
       {pattern && (
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <div
-            className="absolute inset-0 opacity-[0.16]"
+            className={`absolute inset-0 ${bg === "graphite" ? "opacity-[0.22]" : "opacity-[0.16]"}`}
             style={{
-              backgroundImage: "radial-gradient(#6a6e73 1.5px, transparent 1.5px)",
+              backgroundImage: `radial-gradient(${bg === "graphite" ? "#9ca3af" : "#6a6e73"} 1.5px, transparent 1.5px)`,
               backgroundSize: "22px 22px",
               maskImage: "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
               WebkitMaskImage: "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
             }}
           />
-          <div className={`absolute -translate-y-1/3 ${primaryCorner} w-[420px] h-[420px] rotate-45 rounded-[3rem] bg-red-tint`} />
           <div
-            className={`absolute -translate-y-1/3 ${primaryCorner} w-[420px] h-[420px] rotate-45 rounded-[3rem] border-2 border-red/30`}
+            className={`absolute -translate-y-1/3 ${primaryCorner} w-[420px] h-[420px] rotate-45 rounded-[3rem] ${
+              bg === "graphite" ? "bg-red/10 border-2 border-red/30" : "bg-red-tint border-2 border-red/30"
+            }`}
           />
-          <div className={`absolute translate-y-1/4 ${secondaryCorner} w-64 h-64 rotate-45 rounded-[2rem] bg-cloud border-2 border-graphite/10`} />
-          <span className={`hidden md:block absolute w-16 h-16 border-graphite/30 ${bracketA}`} />
+          <div
+            className={`absolute translate-y-1/4 ${secondaryCorner} w-64 h-64 rotate-45 rounded-[2rem] ${
+              bg === "graphite" ? "bg-white/5 border-2 border-white/10" : "bg-cloud border-2 border-graphite/10"
+            }`}
+          />
+          <span
+            className={`hidden md:block absolute w-16 h-16 ${
+              bg === "graphite" ? "border-white/20" : "border-graphite/30"
+            } ${bracketA}`}
+          />
           <span className={`hidden md:block absolute w-16 h-16 border-red/40 ${bracketB}`} />
         </div>
       )}

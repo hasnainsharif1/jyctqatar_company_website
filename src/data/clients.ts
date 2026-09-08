@@ -24,8 +24,35 @@ export const clients: Client[] = [
     sector: "Utilities & Water Management",
     location: "North & Qatar Catchment Zones",
     scope:
-      "Delivered HVAC installation, generator upgrades and interim pumping resilience works for pumping stations under the Ashghal Catchment Zone Framework Contracts.",
+      "Delivered HVAC installation, generator upgrades, SW03 pump station works, and interim pumping resilience works for pumping stations under framework contracts.",
     period: "Ongoing framework contract",
+  },
+  {
+    name: "QD-SBG Construction",
+    logo: "/images/clients/qr_sbg_logo_client1.png",
+    sector: "Infrastructure & Landscape",
+    location: "Lusail, Qatar",
+    scope:
+      "Delivered kerbstone alignment and interlocking pavement works for the CP28B Huzoom Lusail Phase 1 infrastructure and landscape development.",
+    period: "1 Year",
+  },
+  {
+    name: "SAUR",
+    logo: "/images/clients/saur_client.png",
+    sector: "Water & Environmental Services",
+    location: "Doha, Qatar",
+    scope:
+      "Carried out surface preparation and protective coating works for pump station facilities at the Doha South STW development.",
+    period: "Ongoing",
+  },
+  {
+    name: "Aguas de Valencia / Global Omnium",
+    logo: "/images/clients/de_volencia_logo.png",
+    sector: "Water & Infrastructure Works",
+    location: "Umm Salal Muhammed, Qatar",
+    scope:
+      "Executed generator and submersible pump installation and integration works supporting reliable municipal water infrastructure.",
+    period: "1 Month",
   },
   {
     name: "CCC Qatar",

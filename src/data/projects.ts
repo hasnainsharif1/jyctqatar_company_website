@@ -14,6 +14,67 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Huzoom Lusail Infrastructure Project",
+    category: "Contracting",
+    location: "Huzoom, Lusail, Qatar",
+    images: [
+      "/images/projects/qd_sbg_project_image_1.jpeg",
+      "/images/projects/qd_sbg_project_image_2.jpeg",
+      "/images/projects/qd_sbg_project_image_3.jpeg",
+    ],
+    description:
+      "Executed kerbstone and interlocking pavement works for CP28B Phase 1 infrastructure and landscape development in Huzoom Lusail, meeting strict levels and quality standards.",
+    client: "QD-SBG Construction",
+    date: "1 Year",
+    status: "Completed",
+  },
+  {
+    title: "Pump Station Painting Works, Doha South STW",
+    category: "Maintenance",
+    location: "Doha, Qatar",
+    images: [
+      "/images/projects/saur_project_1.jpeg",
+      "/images/projects/saur_project_2.jpeg",
+      "/images/projects/saur_project_3.jpeg",
+    ],
+    description:
+      "Surface preparation and high-performance protective coating works for pump station facilities at Doha South STW to enhance asset resilience and durability.",
+    client: "SAUR",
+    date: "Ongoing",
+    status: "Ongoing",
+  },
+  {
+    title: "Generator Installation & Submersible Pump Works",
+    category: "Maintenance",
+    location: "Umm Salal Muhammed, Qatar",
+    images: [
+      "/images/projects/aguas_de_valencia_1.jpeg",
+      "/images/projects/aguas_de_valencia_2.jpeg",
+      "/images/projects/aguas_de_valencia_3.jpeg",
+    ],
+    description:
+      "Delivered generator installation and submersible pump integration works for municipal water infrastructure, ensuring power readiness and uninterrupted pumping performance.",
+    client: "Aguas de Valencia / Global Omnium",
+    date: "1 Month",
+    status: "Completed",
+  },
+  {
+    title: "SW03 Pump Station Works",
+    category: "Maintenance",
+    location: "Qatar",
+    images: [
+      "/images/projects/Veolia_project_1.jpeg",
+      "/images/projects/Veolia_proejct_2.jpeg",
+      "/images/projects/Veolia_proejct_3.jpeg",
+      "/images/projects/Veolia_proejct_4.jpeg",
+    ],
+    description:
+      "Specialized infrastructure and maintenance works at SW03 Pump Station facility supporting continuous water and wastewater treatment operations.",
+    client: "Veolia",
+    date: "Completed",
+    status: "Completed",
+  },
+  {
     title: "ASHGAL",
     category: "Contracting",
     location: "Doha, Qatar",

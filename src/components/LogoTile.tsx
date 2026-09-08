@@ -11,7 +11,9 @@ export default function LogoTile({ name, logo, className = "" }: LogoTileProps) 
 
   return (
     <div
-      className={`border border-mist rounded p-6 aspect-square bg-white flex items-center justify-center ${className}`}
+      className={`border border-mist rounded p-5 bg-white flex items-center justify-center ${
+        className.includes("aspect-") || className.includes("h-") ? "" : "aspect-square"
+      } ${className}`}
     >
       {hasError ? (
         <span className="font-display uppercase text-graphite text-sm text-center leading-tight">{name}</span>

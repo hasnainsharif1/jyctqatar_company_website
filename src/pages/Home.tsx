@@ -102,16 +102,16 @@ export default function Home() {
         </Container>
       </HeroSlider>
 
-      <Section bg="white" className="border-y border-mist">
+      <Section bg="graphite" className="border-y border-white/10 !py-12 md:!py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 100} className="text-center">
               <CountUpNumber
                 value={stat.value}
                 suffix={stat.suffix}
-                className="font-display text-4xl md:text-5xl font-semibold text-graphite"
+                className="font-display text-4xl md:text-5xl font-semibold text-white tracking-tight"
               />
-              <div className="text-steel uppercase text-xs font-medium tracking-wide mt-2">{stat.label}</div>
+              <div className="text-mist uppercase text-xs font-medium tracking-wider mt-2">{stat.label}</div>
             </Reveal>
           ))}
         </div>
@@ -194,32 +194,44 @@ export default function Home() {
         </Reveal>
       </Section>
 
-      <Section bg="white" pattern patternSide="left">
+      <Section bg="graphite" pattern patternSide="left">
         <Reveal>
-          <SectionHeading eyebrow="Why Choose Us" title={`Why ${site.shortName}`} align="center" />
+          <SectionHeading eyebrow="Why Choose Us" title={`Why ${site.shortName}`} align="center" light />
         </Reveal>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {whyUs.map((item, i) => (
-            <Reveal key={item} delay={i * 80} className="flex items-center gap-3">
-              <Check className="text-red flex-shrink-0" size={22} strokeWidth={2.5} />
-              <span className="font-semibold text-ink">{item}</span>
+            <Reveal key={item} delay={i * 80}>
+              <div className="flex items-center gap-3.5 p-5 rounded bg-white/5 border border-white/10 hover:border-red hover:bg-white/[0.08] transition-all duration-300">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-red/15 flex items-center justify-center">
+                  <Check className="text-red" size={18} strokeWidth={2.8} />
+                </div>
+                <span className="font-semibold text-white tracking-wide text-sm sm:text-base">{item}</span>
+              </div>
             </Reveal>
           ))}
         </div>
       </Section>
 
-      <Section bg="cloud" className="bg-[linear-gradient(180deg,#eef1f3_0%,#f5f6f7_45%,#e8ebee_100%)]">
+      <Section bg="cloud" className="bg-[linear-gradient(180deg,#eef1f3_0%,#f5f6f7_45%,#e8ebee_100%)] overflow-hidden">
         <Reveal>
           <SectionHeading eyebrow="Our Clients" title="Trusted Across Qatar" align="center" />
         </Reveal>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mb-10">
-          {clients.slice(0, 6).map((client, i) => (
-            <Reveal key={client.name} delay={i * 60}>
-              <LogoTile name={client.name} logo={client.logo} />
-            </Reveal>
-          ))}
+
+        <div className="relative w-full overflow-hidden marquee-mask py-4 mb-10">
+          <div className="animate-marquee-ltr flex items-center gap-6">
+            {[...clients, ...clients].map((client, idx) => (
+              <div key={`${client.name}-${idx}`} className="flex-shrink-0">
+                <LogoTile
+                  name={client.name}
+                  logo={client.logo}
+                  className="w-44 sm:w-52 h-28 sm:h-32 shadow-xs hover:shadow-md hover:border-red hover:-translate-y-0.5 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-        <Reveal delay={6 * 60}>
+
+        <Reveal delay={200}>
           <div className="text-center">
             <Button href="/clients" variant="secondary">
               See All Clients
